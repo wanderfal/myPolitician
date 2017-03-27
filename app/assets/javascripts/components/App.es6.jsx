@@ -15,20 +15,18 @@ class App extends React.Component {
       stateRepBills: [],
       historicalStateRepVotes: [],
       stateRepTimeline: []
-
-
     }
-    this.getStateMembers        		= this.getStateMembers.bind(this)
-    this.getHouseMember         		= this.getHouseMember.bind(this)
-    this.getMember              		= this.getMember.bind(this)
-    this.getMemberBills         		= this.getMemberBills.bind(this)
-    this.getTwitter             		= this.getTwitter.bind(this)
-    this.getHistoricalPositions 		= this.getHistoricalPositions.bind(this)
-    this.getName                		= this.getName.bind(this)
-    this.getStateMemberById				= this.getStateMemberById.bind(this)
-    this.getStateMemberBills			= this.getStateMemberBills.bind(this)
-    this.getStateRepHistoricalPositions	= this.getStateRepHistoricalPositions.bind(this)
-    this.getStateRepTwitter				= this.getStateRepTwitter.bind(this)
+    this.getStateMembers=this.getStateMembers.bind(this)
+    this.getHouseMember=this.getHouseMember.bind(this)
+    this.getMember=this.getMember.bind(this)
+    this.getMemberBills=this.getMemberBills.bind(this)
+    this.getTwitter=this.getTwitter.bind(this)
+    this.getHistoricalPositions=this.getHistoricalPositions.bind(this)
+    this.getName=this.getName.bind(this)
+    this.getStateMemberById=this.getStateMemberById.bind(this)
+    this.getStateMemberBills=this.getStateMemberBills.bind(this)
+    this.getStateRepHistoricalPositions=this.getStateRepHistoricalPositions.bind(this)
+    this.getStateRepTwitter=this.getStateRepTwitter.bind(this)
   }
 
 
@@ -66,9 +64,7 @@ class App extends React.Component {
       // This way the twitter response is
       this.getTwitter(response.results[0].twitter_id)
     }.bind(this))
-
   }
-
 
 // Rep Profile props
 ////////////////////
@@ -111,7 +107,6 @@ class App extends React.Component {
       }.bind(this))
   }
 
-
   getStateMemberBills(id) {
       let key = this.state.key
       $.ajax({
@@ -125,8 +120,6 @@ class App extends React.Component {
       }.bind(this))
   }
 
-
-
   getTwitter(twitterHandle) {
     $.ajax({
       type: 'post',
@@ -138,7 +131,6 @@ class App extends React.Component {
     }.bind(this))
   }
 
-
   getStateRepTwitter(twitterHandle) {
     $.ajax({
       type: 'post',
@@ -149,7 +141,6 @@ class App extends React.Component {
       this.setState({stateRepTimeline: response})
     }.bind(this))
   }
-
 
   getHistoricalPositions(id) {
     $.ajax({
@@ -176,45 +167,39 @@ class App extends React.Component {
   }
 
 
-
-
   render(){
     return(
       <div>
         <MapPage
-
-          onGetName                 ={this.getName}
-          houseMember               ={this.state.houseMember}
-          onGetStateMembers         ={this.getStateMembers}
-          onGetHouseMember          ={this.getHouseMember}
-          onGetMember               ={this.getMember}
-          onGetTwitter              ={this.getTwitter}
-          onGetMemberBills          ={this.getMemberBills}
-          onGetHistoricalPositions  ={this.getHistoricalPositions}
-
+          onGetName={this.getName}
+          houseMember={this.state.houseMember}
+          onGetStateMembers={this.getStateMembers}
+          onGetHouseMember={this.getHouseMember}
+          onGetMember={this.getMember}
+          onGetTwitter={this.getTwitter}
+          onGetMemberBills={this.getMemberBills}
+          onGetHistoricalPositions={this.getHistoricalPositions}
         />
         <RepPage
-
-          stateMembers              ={this.state.stateMembers}
-          singleRepresentative      ={this.state.singleRepresentative}
-          onGetMember               ={this.getMember}
-          houseMember               ={this.state.houseMember}
-          defaultShowInfo           ={this.state.defaultShow}
-
+          stateMembers={this.state.stateMembers}
+          singleRepresentative={this.state.singleRepresentative}
+          onGetMember={this.getMember}
+          houseMember={this.state.houseMember}
+          defaultShowInfo={this.state.defaultShow}
           // apiKey={this.state.key}
-          onGetTwitter             		   ={this.getTwitter}
-          timeline                  	   ={this.state.timeline}
-          stateRepTimeline 				   ={this.state.stateRepTimeline}
-          onGetMemberBills          	   ={this.getMemberBills}
-          repBills                  	   ={this.state.repBills}
-          onGetHistoricalPositions  	   ={this.getHistoricalPositions}
-          historicalVotes           	   ={this.state.historicalVotes}
-          onGetStateMemberById			   ={this.getStateMemberById}
-          singleStateRep				   ={this.state.singleStateRep}
-          onGetStateMemberBills			   ={this.getStateMemberBills}
-          stateRepBills					   ={this.state.stateRepBills}
-          onGetStateRepHistoricalPositions ={this.getStateRepHistoricalPositions}
-          historicalStateRepVotes     	   ={this.state.historicalStateRepVotes}
+          onGetTwitter={this.getTwitter}
+          timeline={this.state.timeline}
+          stateRepTimeline={this.state.stateRepTimeline}
+          onGetMemberBills={this.getMemberBills}
+          repBills={this.state.repBills}
+          onGetHistoricalPositions={this.getHistoricalPositions}
+          historicalVotes={this.state.historicalVotes}
+          onGetStateMemberById={this.getStateMemberById}
+          singleStateRep={this.state.singleStateRep}
+          onGetStateMemberBills={this.getStateMemberBills}
+          stateRepBills={this.state.stateRepBills}
+          onGetStateRepHistoricalPositions={this.getStateRepHistoricalPositions}
+          historicalStateRepVotes={this.state.historicalStateRepVotes}
         />
       </div>
     )
