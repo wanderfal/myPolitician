@@ -29,7 +29,15 @@ class App extends React.Component {
     this.getStateRepTwitter=this.getStateRepTwitter.bind(this)
   }
 
+  requestChamber(chamber, district=''){
+    $.ajax({
+      url: 'https://api.propublica.org/congress/v1/members/' + chamber + '/NY/' + district + '/current.json',
+      beforeSend: function(request) {
+        request.setRequestHeader("X-API-Key", "y3spXskaU43BBv4WCh6BazYtzVOToHf1ZUhTiiQc");
+      }
 
+    })
+  }
 // Props for MapPage
 ////////////////////
 // Currently only returns senate members from NY state
@@ -48,6 +56,12 @@ class App extends React.Component {
     .then(function(response) {
       this.setState({stateMembers : response.results})
     }.bind(this))
+  }
+
+  getStateMembers(){
+    requestChamber('senate').success(function(response) {
+        this.setState({stateMembers : response.results})
+      }.bind(this))
   }
 
 // Gets the house member of specific district
